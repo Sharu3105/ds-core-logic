@@ -17,3 +17,9 @@ def get_categorical_counts(df, column_name):
     Useful for checking data distribution before modeling.
     """
     return df[column_name].value_counts()
+def get_correlation_matrix(df):
+    """
+    Advanced DS Tool: Computes the correlation matrix.
+    Essential for Feature Selection in Machine Learning.
+    """
+    return df.corr()
