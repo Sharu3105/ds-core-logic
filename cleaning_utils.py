@@ -23,3 +23,11 @@ def get_correlation_matrix(df):
     Essential for Feature Selection in Machine Learning.
     """
     return df.corr()
+import re
+
+def clean_text(text):
+    """
+    Standardizes text by removing special characters 
+    and converting to lowercase. Essential for NLP.
+    """
+    return re.sub(r'[^a-zA-Z0-9\s]', '', text).lower().strip()
