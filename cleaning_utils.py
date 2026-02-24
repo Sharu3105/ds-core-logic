@@ -31,3 +31,18 @@ def clean_text(text):
     and converting to lowercase. Essential for NLP.
     """
     return re.sub(r'[^a-zA-Z0-9\s]', '', text).lower().strip()
+
+import time
+
+def timer_decorator(func):
+    """
+    Pro Tool: Measures execution time of a function.
+    Critical for identifying performance bottlenecks.
+    """
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Function {func.__name__} took {end_time - start_time:.4f}s")
+        return result
+    return wrapper
