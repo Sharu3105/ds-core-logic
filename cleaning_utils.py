@@ -46,3 +46,13 @@ def timer_decorator(func):
         print(f"Function {func.__name__} took {end_time - start_time:.4f}s")
         return result
     return wrapper
+
+def standard_scaler(data):
+    """
+    Advanced DS Tool: Performs Z-score standardization.
+    Essential for scaling features before training models like SVM or Logistic Regression.
+    """
+    mean = sum(data) / len(data)
+    variance = sum((x - mean) ** 2 for x in data) / len(data)
+    std_dev = variance ** 0.5
+    return [(x - mean) / std_dev for x in data]
