@@ -56,3 +56,17 @@ def standard_scaler(data):
     variance = sum((x - mean) ** 2 for x in data) / len(data)
     std_dev = variance ** 0.5
     return [(x - mean) / std_dev for x in data]
+
+def get_redundant_features(df, threshold=0.9):
+    """
+    Advanced DS Tool: Identifies pairs of features with a correlation
+    higher than the specified threshold. 
+    Essential for Feature Selection in high-dimensional datasets.
+    """
+    corr_matrix = df.corr().abs()
+    # Select upper triangle of correlation matrix
+    upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+    
+    # Find features with correlation greater than threshold
+    to_drop = [column for column in upper.columns if any(upper[column] > threshold)]
+    return to_drop
